@@ -1,0 +1,85 @@
+package demo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class basic
+ */
+@WebServlet("/basic")
+public class basic extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Default constructor.
+	 */
+	public basic() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html");
+		// TODO Auto-generated method stub
+		String htmlResponse = "<html> <head> Welcome india </head></html>";
+		PrintWriter printWriter = response.getWriter();
+		printWriter.write(htmlResponse); // this is written at web
+
+		  System.out.println(htmlResponse + "ok");
+		System.out.println(" welcome to linkedin world "); //
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("login.html");
+
+		ServletConfig config = getServletConfig();
+		String url = config.getInitParameter("URL");
+		System.out.println(url);
+
+		// RequestDispatcher dispatcher
+		// =request.getRequestDispatcher("/html/login.html");
+		// dispatcher.include(request,response);
+		// response.sendRedirect("https://www.linkedin.com/feed/");
+		// response.sendRedirect("/Linkedin_projects/WebContent/login.html");
+
+	}
+
+	/*	*//**
+			 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+			 *      response)
+			 *//*
+				 * @Override public void destroy() { // TODO Auto-generated method stub
+				 * super.destroy(); }
+				 * 
+				 * @Override public void init() throws ServletException { // TODO Auto-generated
+				 * method stub super.init(); }
+				 * 
+				 * @Override protected void service(HttpServletRequest arg0, HttpServletResponse
+				 * arg1) throws ServletException, IOException { // TODO Auto-generated method
+				 * stub super.service(arg0, arg1); }
+				 * 
+				 * protected void doPost(HttpServletRequest request, HttpServletResponse
+				 * response) throws ServletException, IOException { // TODO Auto-generated
+				 * method stub doGet(request, response);
+				 * 
+				 * String username = request.getParameter("username"); String password =
+				 * request.getParameter("password");
+				 * 
+				 * Dao dao = new Dao(username, password);
+				 * 
+				 * }
+				 */
+
+}
